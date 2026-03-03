@@ -56,7 +56,7 @@ border:none;
 /* NAVBAR */
 
 .nav{
-position:sticky;
+position:relative;
 top:0;
 background:white;
 display:flex;
@@ -249,20 +249,63 @@ padding:20px;
 
 @media(max-width:768px){
 
+/* Navbar */
 .nav{
-flex-direction:column;
-gap:10px;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
 }
 
 .nav ul{
-flex-direction:column;
-text-align:center;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.nav a{
+    font-size:14px;
+}
+
+/* Hero Section */
+.main{
+    flex-direction:column;
+    text-align:center;
+    gap:25px;
+}
+
+.main img{
+    width:180px;
 }
 
 .main-detail h1{
-font-size:30px;
+    font-size:28px;
 }
 
+.main-detail p{
+    font-size:16px;
+}
+
+}
+
+/* scrool button */
+
+#scrollTopBtn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#2d6cdf;
+    color:white;
+    border:none;
+    padding:12px 15px;
+    font-size:18px;
+    border-radius:50%;
+    cursor:pointer;
+    display:none;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+#scrollTopBtn:hover{
+    background:#1b4fbf;
 }
 
 </style>
@@ -451,6 +494,9 @@ Tools
 
 </div>
 </section>
+<!--scrool button-->
+
+<button id="scrollTopBtn">&#8679;</button>
 
 <!--FOTTER-->
 
@@ -511,5 +557,29 @@ emailjs.send("service_e1w8oon","template_jyw4egp",params)
 });
 });
 </script>
+
+<!--scroll button script-->
+
+<script>
+
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+};
+
+scrollBtn.onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+};
+
+</script>
+
 </body>
 </html>
